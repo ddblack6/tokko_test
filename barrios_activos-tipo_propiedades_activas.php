@@ -23,14 +23,17 @@ $search = new TokkoSearch($auth);
 $search->do_search();
 
 foreach ($search->get_properties() as $property){ 
+	$i++;
+	//Propiedades tipo	
+	$arrayPropiedades[$property->get_field("type")->id]= strtoupper($property->get_field("type")->name);
 
-    //Propiedades tipo	
-    $arrayPropiedades[]= strtoupper($property->get_field("type")->name);
+	//print_r($property->get_field("location"));
+
+	$arrayBarrio[$property->get_field("location")->id]["id"]= strtoupper($property->get_field("location")->id); 	
+	$arrayBarrio[$property->get_field("location")->id]["name"]= strtoupper($property->get_field("location")->name); 
 	
-	  //print_r($property->get_field("location"));
-	  $arrayBarrio[]= strtoupper($property->get_field("location")->name); 
-	
-	//echo "<hr>"; 
+	//echo "<hr>";
+ 
 } 
 echo "<pre>";
 
